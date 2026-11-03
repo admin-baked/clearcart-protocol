@@ -1,0 +1,218 @@
+openapi: 3.1.0
+info:
+  title: ClearCart Gate API
+  version: "1.0.0"
+  description: |
+    Standalone compliance gate for agent-driven commerce. Given a buyer
+    attestation ID and a cart of SKUs, the gate resolves verification
+    status, purchase history, and product attributes from its own
+    server-side store and catalogs, and returns a signed decision
+    receipt: APPROVE, DENY, or REVIEW, with machine-readable reasons.
+
+    Reference implementation for a hackathon demo. Demo policies are
+    simulated (see policy_id SIMULATED_POLICY_V1) and are not a
+    statement of any jurisdiction's law. Not a production system.
+servers:
+  - url: http://127.0.0.1:8787
+    description: Local reference implementation (npm run gate)
+security:
+  - gateKey: []
+paths:
+  /v1/gate/check:
+    post:
+      operationId: gateCheck
+      summary: Evaluate one proposed transaction
+      description: |
+        The request carries only an attestation ID and SKUs. Any
+        verification flags or product attribute values in the request
+        are ignored: the gate resolves both server-side. An APPROVE
+        decision reserves the cart totals in the gate's ledger
+        immediately, and its receipt is bound (HMAC-SHA256) to the
+        merchant, the catalog-resolved cart hash, the policy ID, and
+        an expiry, and is single-use at payment.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GateCheckRequest"
+            example:
+              jurisdiction: { country: US, state: IL }
+              category: cannabis
+              merchant_id: mrc_demo_prairie
+              buyer: { attestation_id: att_demo_7f3a }
+              cart:
+                - { sku: FLW-001, quantity: 1 }
+                - { sku: EDB-002, quantity: 2 }
+      responses:
+        "200":
+          description: A decision receipt (APPROVE, DENY, or REVIEW)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DecisionReceipt"
+        "400":
+          description: Malformed request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Missing or wrong x-gate-key header
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /v1/gate/limits:
+    get:
+      operationId: gateLimits
+      summary: Read the active limit configuration for a jurisdiction and category
+      parameters:
+        - name: state
+          in: query
+          required: true
+          schema: { type: string }
+          example: IL
+        - name: category
+          in: query
+          required: true
+          schema: { type: string }
+          example: cannabis
+      responses:
+        "200":
+          description: The active configuration, labeled simulated when it is a demo policy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GateConfig"
+        "404":
+          description: No configuration for that jurisdiction and category; the gate refuses rather than guessing
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /v1/gate/receipts/verify:
+    post:
+      operationId: gateVerifyReceipt
+      summary: Verify a decision receipt (signature and expiry)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DecisionReceipt"
+      responses:
+        "200":
+          description: Verification result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid: { type: boolean }
+                  errors:
+                    type: array
+                    items: { type: string }
+                    example: []
+              example: { valid: true, errors: [] }
+components:
+  securitySchemes:
+    gateKey:
+      type: apiKey
+      in: header
+      name: x-gate-key
+      description: Demo-grade API key, required on /v1 routes when the service is configured with one.
+  schemas:
+    GateCheckRequest:
+      type: object
+      required: [jurisdiction, category, merchant_id, buyer, cart]
+      properties:
+        jurisdiction:
+          type: object
+          required: [country, state]
+          properties:
+            country: { type: string, example: US }
+            state: { type: string, example: IL }
+        category: { type: string, example: cannabis }
+        merchant_id:
+          type: string
+          example: mrc_demo_prairie
+          description: Identifies whose gate-side catalog resolves the cart; the receipt is bound to it.
+        buyer:
+          type: object
+          required: [attestation_id]
+          properties:
+            attestation_id:
+              type: string
+              example: att_demo_7f3a
+              description: The only buyer field read. Verification status is resolved by the gate from its trusted store.
+        cart:
+          type: array
+          items:
+            type: object
+            required: [sku, quantity]
+            properties:
+              sku: { type: string, example: FLW-001 }
+              category: { type: string, example: flower }
+              quantity: { type: number, example: 1 }
+    DecisionReceipt:
+      type: object
+      required: [merchant_id, decision_id, decision, reasons, evaluated, policy_id, cart_hash, receipt_signature, issued_at, expires_at]
+      properties:
+        merchant_id: { type: string, example: mrc_demo_prairie }
+        decision_id: { type: string, example: dec_20261103_0001 }
+        decision: { type: string, enum: [APPROVE, DENY, REVIEW] }
+        reasons:
+          type: array
+          items:
+            type: object
+            required: [code, detail]
+            properties:
+              code:
+                type: string
+                enum: [AGE_UNVERIFIED, ID_UNVERIFIED, ATTESTATION_EXPIRED, LIMIT_EXCEEDED, CART_ITEM_UNKNOWN, JURISDICTION_NOT_SERVED, CATEGORY_NOT_ENABLED]
+              detail: { type: string }
+              limit: { type: number }
+              attempted: { type: number }
+        evaluated:
+          type: object
+          properties:
+            flower_equivalent_g_total: { type: number, example: 10.5 }
+            infused_thc_mg_total: { type: number, example: 400 }
+            items_total: { type: number }
+            limits_applied:
+              type: object
+              additionalProperties: { type: number }
+              example: { flower_equivalent_g_per_day: 30, infused_thc_mg_per_day: 500 }
+        policy_id:
+          type: string
+          example: SIMULATED_POLICY_V1
+          description: The policy that produced this decision. Demo policies are simulated.
+        cart_hash:
+          type: string
+          example: "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"
+          description: SHA-256 of the canonical cart lines as resolved from the merchant catalog.
+        receipt_signature:
+          type: string
+          description: HMAC-SHA256 (hex) over the canonical receipt body, binding merchant, decision ID, decision, reasons, evaluated totals, policy ID, cart hash, and expiry.
+        issued_at: { type: string, format: date-time }
+        expires_at: { type: string, format: date-time }
+    GateConfig:
+      type: object
+      properties:
+        country: { type: string }
+        state: { type: string }
+        category: { type: string }
+        enabled: { type: boolean }
+        simulated: { type: boolean }
+        policy_id: { type: string, example: SIMULATED_POLICY_V1 }
+        label: { type: string }
+        attestation_max_age_hours: { type: number }
+        limits:
+          type: object
+          additionalProperties: { type: number }
+    Error:
+      type: object
+      properties:
+        error: { type: string }
+        detail: { type: string }
