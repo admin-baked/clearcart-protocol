@@ -1,0 +1,29 @@
+{
+  "id": "chatcmpl-01a1a0e8-f99a-7686-a519-575404ff14ef",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "Found one near you — under $100 and citrus-forward:\n\n**Prairie Test Gardens — Chicago, IL**\n\nFrom their live menu, 2 citrus options in-stock under $100:\n\n1. **Demo Flower: Prairie Sunrise - $45**\n   - SKU: FLW-001, 3.5g, 22% THC\n   - 14 in stock\n   - \"Citrus-forward and bright, written for a Saturday afternoon\"\n\n2. **Demo Edibles: Citrus Gummies - $25**\n   - SKU: EDB-002, 10g, 100 mg THC per unit\n   - 16 in stock\n   - Citrus gummies\n\nNote: Demo Flower: Golden Hour (light citrus and honey, $48) is also citrus but **out of stock** — 0 inventory.\n\nI've put together a weekend combo for you:\n- 1x Prairie Sunrise ($45) + 1x Citrus Gummies ($25)\n- **Total: $70** — Quote `q_0001`\n\nThat keeps you well under $100.\n\nWant me to place this order now? The quote expires quickly.",
+        "refusal": null,
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793700985,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 990,
+    "prompt_tokens": 2204,
+    "total_tokens": 3194,
+    "completion_tokens_details": {
+      "reasoning_tokens": 746
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 1905
+    }
+  }
+}

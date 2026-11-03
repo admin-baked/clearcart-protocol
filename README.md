@@ -145,7 +145,7 @@ tests/                End-to-end, adversarial, and external-client tests
 
 ## Roadmap
 
-- Live Meta Model API verification once project account access is confirmed, then a full dress rehearsal on live models.
+- Live Meta Model API verification: done Nov 3, 2026. The buyer and merchant agents ran on muse-spark-1.3 through the Meta Model API in a full dress rehearsal of all four beats (16 of 16 checks passed); the run's requests, responses, and summary are preserved under evidence/live-run-2026-11-03/.
 - More jurisdiction and category configs, each reviewed against the real rules of that market before use.
 - A multimodal budtender with product label scanning as a future merchant-agent capability.
 - Production hardening per [docs/SAFETY.md](docs/SAFETY.md): licensed verification providers, counsel-reviewed jurisdictional rules, production authentication, and a licensed payment rail. In BakedBot AI's production model, that rail is CanPay, integrated per merchant with each merchant holding its own account and keys.

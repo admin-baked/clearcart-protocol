@@ -1,0 +1,156 @@
+{
+  "model": "muse-spark-1.3",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the ClearCart buyer agent. You shop on behalf of a demo buyer by calling tools: discover_merchants, get_menu, ask_merchant, add_to_cart, get_quote, place_order. Never invent products, prices, or inventory; use only what tool results return."
+    },
+    {
+      "role": "user",
+      "content": "Find me a dispensary near Chicago with something citrus-forward for the weekend, and keep it under a hundred dollars."
+    },
+    {
+      "role": "assistant",
+      "content": "[tool call: discover_merchants]"
+    },
+    {
+      "role": "user",
+      "content": "Tool result (discover_merchants): {\"merchants\":[{\"id\":\"mrc_demo_prairie\",\"name\":\"Prairie Test Gardens\",\"location\":\"Chicago, IL\"}]}"
+    },
+    {
+      "role": "assistant",
+      "content": "[tool call: get_menu]"
+    },
+    {
+      "role": "user",
+      "content": "Tool result (get_menu): {\"merchant_id\":\"mrc_demo_prairie\",\"items\":[{\"category\":\"flower\",\"description\":\"Fictional demo product. Citrus-forward and bright, written for a Saturday afternoon in the demo script.\",\"flower_equivalent_g\":3.5,\"inventory\":14,\"name\":\"Demo Flower: Prairie Sunrise\",\"price_usd\":45,\"size_g\":3.5,\"sku\":\"FLW-001\",\"thc_mg\":0,\"thc_percent\":22},{\"category\":\"flower\",\"description\":\"Fictional demo product. Earthy and mellow, the calm end of the demo menu.\",\"flower_equivalent_g\":3.5,\"inventory\":9,\"name\":\"Demo Flower: River Stone\",\"price_usd\":40,\"size_g\":3.5,\"sku\":\"FLW-002\",\"thc_mg\":0,\"thc_percent\":18},{\"category\":\"flower\",\"description\":\"Fictional demo product. Dark fruit notes, positioned as the evening option in the demo menu.\",\"flower_equivalent_g\":3.5,\"inventory\":6,\"name\":\"Demo Flower: Night Orchard\",\"price_usd\":52,\"size_g\":3.5,\"sku\":\"FLW-003\",\"thc_mg\":0,\"thc_percent\":25},{\"category\":\"flower\",\"description\":\"Fictional demo product. Light citrus and honey, a second citrus option for comparison.\",\"flower_equivalent_g\":3.5,\"inventory\":0,\"name\":\"Demo Flower: Golden Hour\",\"price_usd\":48,\"size_g\":3.5,\"sku\":\"FLW-004\",\"thc_mg\":0,\"thc_percent\":20},{\"category\":\"edible\",\"description\":\"Fictional demo product. Low-dose drops, 50 mg THC per unit, for the demo menu.\",\"flower_equivalent_g\":0,\"inventory\":20,\"name\":\"Demo Edibles: Prairie Drops\",\"price_usd\":20,\"size_g\":10,\"sku\":\"EDB-001\",\"thc_mg\":50,\"thc_percent\":0},{\"category\":\"edible\",\"description\":\"Fictional demo product. Citrus gummies, 100 mg THC per unit. The edible used in the demo order.\",\"flower_equivalent_g\":0,\"inventory\":16,\"name\":\"Demo Edibles: Citrus Gummies\",\"price_usd\":25,\"size_g\":10,\"sku\":\"EDB-002\",\"thc_mg\":100,\"thc_percent\":0},{\"category\":\"edible\",\"description\":\"Fictional demo product. Microdose mints, 10 mg THC per unit.\",\"flower_equivalent_g\":0,\"inventory\":30,\"name\":\"Demo Edibles: Meadow Mints\",\"price_usd\":12,\"size_g\":5,\"sku\":\"EDB-003\",\"thc_mg\":10,\"thc_percent\":0},{\"category\":\"vape\",\"description\":\"Fictional demo product. Demo vape cartridge, 300 mg THC per unit.\",\"flower_equivalent_g\":0,\"inventory\":11,\"name\":\"Demo Vape: Prairie Cart\",\"price_usd\":38,\"size_g\":1,\"sku\":\"VAP-001\",\"thc_mg\":300,\"thc_percent\":0},{\"category\":\"vape\",\"description\":\"Fictional demo product. Stone fruit demo vape cartridge, 250 mg THC per unit.\",\"flower_equivalent_g\":0,\"inventory\":7,\"name\":\"Demo Vape: Stone Fruit Cart\",\"price_usd\":34,\"size_g\":1,\"sku\":\"VAP-002\",\"thc_mg\":250,\"thc_percent\":0}]}"
+    },
+    {
+      "role": "assistant",
+      "content": "[tool call: ask_merchant]"
+    },
+    {
+      "role": "user",
+      "content": "Tool result (ask_merchant): {\"answer\":\"For Prairie Test Gardens, I have 2 citrus-forward products in stock under $100:\\n\\n**1. Demo Flower: Prairie Sunrise - $45**\\n- SKU: FLW-001\\n- Size: 3.5g, 22% THC\\n- Inventory: 14 in stock\\n- Description: \\\"Fictional demo product. Citrus-forward and bright, written for a Saturday afternoon in the demo script.\\\"\\n\\n**2. Demo Edibles: Citrus Gummies - $25**\\n- SKU: EDB-002\\n- Size: 10g, 100 mg THC per unit\\n- Inventory: 16 in stock\\n- Description: \\\"Fictional demo product. Citrus gummies, 100 mg THC per unit. The edible used in the demo order.\\\"\\n\\nNote: Demo Flower: Golden Hour is also listed as light citrus and honey, but it is currently out of stock with 0 inventory.\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "[tool call: add_to_cart]"
+    },
+    {
+      "role": "user",
+      "content": "Tool result (add_to_cart): {\"sku\":\"FLW-001\",\"quantity\":1,\"cart\":[{\"sku\":\"FLW-001\",\"quantity\":1}]}"
+    },
+    {
+      "role": "assistant",
+      "content": "[tool call: add_to_cart]"
+    },
+    {
+      "role": "user",
+      "content": "Tool result (add_to_cart): {\"sku\":\"EDB-002\",\"quantity\":1,\"cart\":[{\"sku\":\"FLW-001\",\"quantity\":1},{\"sku\":\"EDB-002\",\"quantity\":1}]}"
+    }
+  ],
+  "max_tokens": 4096,
+  "temperature": 0.2,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "discover_merchants",
+        "description": "Find ClearCart merchant agents near a place.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "near": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "near"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "get_menu",
+        "description": "Fetch a merchant agent's live menu with prices and inventory.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "merchant_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "merchant_id"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "ask_merchant",
+        "description": "Ask the merchant agent a product question, answered only from its menu data.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "question": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "question"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "add_to_cart",
+        "description": "Add a menu item to the cart by SKU.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "sku": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "sku",
+            "quantity"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "get_quote",
+        "description": "Get a priced quote with a TTL for the current cart.",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "place_order",
+        "description": "Submit the quoted cart. The merchant runs the compliance gate before any payment session exists.",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    }
+  ],
+  "tool_choice": "auto"
+}

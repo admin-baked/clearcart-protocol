@@ -1,0 +1,47 @@
+{
+  "id": "chatcmpl-01a1a0e8-b6f9-77f9-811c-de8b04690adf",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "Found your citrus picks near Chicago — grabbing them for a sub-$100 weekend.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_c343007a-1143-498a-9f16-a055fedba156",
+            "type": "function",
+            "function": {
+              "name": "add_to_cart",
+              "arguments": "{\"quantity\":1.0,\"sku\":\"FLW-001\"}"
+            }
+          },
+          {
+            "id": "call_44a1c22c-f90e-4919-a9a8-c1a62bbe3bf1",
+            "type": "function",
+            "function": {
+              "name": "add_to_cart",
+              "arguments": "{\"quantity\":1.0,\"sku\":\"EDB-002\"}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793700968,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 585,
+    "prompt_tokens": 1935,
+    "total_tokens": 2520,
+    "completion_tokens_details": {
+      "reasoning_tokens": 422
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 1649
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "chatcmpl-01a1a0ea-21e5-72b2-8632-632f9bb13a6e",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "I'll stock up for your restock run — checking availability and preparing your cart.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_3b254d66-2bed-4da9-80fc-dcd27ae4794f",
+            "type": "function",
+            "function": {
+              "name": "add_to_cart",
+              "arguments": "{\"quantity\":8.0,\"sku\":\"FLW-001\"}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793701060,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 1130,
+    "prompt_tokens": 2973,
+    "total_tokens": 4103,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1035
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 1905
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "id": "chatcmpl-01a1a0e9-5cc1-74c6-a7c9-5a80b6f27dd0",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "Got it — adding Prairie Sunrise and Citrus Gummies to your cart.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_58fb5ea0-4a75-41fa-9dbc-23afb988069e",
+            "type": "function",
+            "function": {
+              "name": "add_to_cart",
+              "arguments": "{\"quantity\":1.0,\"sku\":\"FLW-001\"}"
+            }
+          },
+          {
+            "id": "call_fd6538d9-0696-4a95-af67-1666aa2672a7",
+            "type": "function",
+            "function": {
+              "name": "add_to_cart",
+              "arguments": "{\"quantity\":2.0,\"sku\":\"EDB-002\"}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793701010,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 378,
+    "prompt_tokens": 1699,
+    "total_tokens": 2077,
+    "completion_tokens_details": {
+      "reasoning_tokens": 216
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 881
+    }
+  }
+}

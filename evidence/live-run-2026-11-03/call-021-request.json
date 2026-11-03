@@ -1,0 +1,15 @@
+{
+  "model": "muse-spark-1.3",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the ClearCart explanation assistant. You receive a compliance gate decision that is already final. Explain it to the shopper in one or two plain sentences. Never soften, reverse, or reinterpret the decision or its reason codes."
+    },
+    {
+      "role": "user",
+      "content": "DECISION_JSON: {\"merchant_id\":\"mrc_demo_prairie\",\"decision_id\":\"dec_20261103_0002\",\"decision\":\"DENY\",\"reasons\":[{\"code\":\"LIMIT_EXCEEDED\",\"detail\":\"This purchase would put the buyer at 38.5 g flower-equivalent against a 30 g daily limit.\",\"limit\":30,\"attempted\":38.5},{\"code\":\"LIMIT_EXCEEDED\",\"detail\":\"This purchase would put the buyer at 600 mg infused THC against a 500 mg daily limit.\",\"limit\":500,\"attempted\":600}],\"evaluated\":{\"limits_applied\":{\"flower_equivalent_g_per_day\":30,\"infused_thc_mg_per_day\":500},\"flower_equivalent_g_total\":38.5,\"infused_thc_mg_total\":600},\"policy_id\":\"SIMULATED_POLICY_V1\",\"cart_hash\":\"29f7eef29e230b03c9c0897eb9ba7e9d7b94f591aef0352e3f3c0354733a67e5\",\"issued_at\":\"2026-11-03T10:17:59.384Z\",\"expires_at\":\"2026-11-03T10:22:59.384Z\",\"receipt_signature\":\"115a739626f6594b968476346edd4cc0857e2d703c43195b444b6054530df3b2\"}"
+    }
+  ],
+  "max_tokens": 4096,
+  "temperature": 0.2
+}

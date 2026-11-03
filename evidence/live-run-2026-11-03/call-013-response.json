@@ -1,0 +1,39 @@
+{
+  "id": "chatcmpl-01a1a0e9-87db-71df-b777-8176d3372696",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "Your Prairie Sunrise and Citrus Gummies are quoted — I'll place the order now.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_47507138-a915-4189-9544-5eb9cc28ef6f",
+            "type": "function",
+            "function": {
+              "name": "place_order",
+              "arguments": "{}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793701021,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 631,
+    "prompt_tokens": 1968,
+    "total_tokens": 2599,
+    "completion_tokens_details": {
+      "reasoning_tokens": 570
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 881
+    }
+  }
+}

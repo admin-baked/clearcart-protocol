@@ -1,0 +1,177 @@
+
+> clearcart-protocol@0.1.0 demo:live
+> node demo/run-demo-live.ts
+
+ClearCart Protocol + ClearCart Gate: LIVE dress rehearsal
+Model provider: Meta Model API (live, model muse-spark-1.3) via the connected helper. Payment rail: sandbox stub. No real money, no real data.
+Evidence directory: /home/hatch/workspace/hackathon-meta-2026/evidence/live-run-2026-11-03
+Gate service (browsing session) listening at http://127.0.0.1:42143 (standalone, x-gate-key auth on)
+
+=== BEAT 1: Discovery and a product question ===
+Shopper: Find me a dispensary near Chicago with something citrus-forward for the weekend, and keep it under a hundred dollars.
+Buyer agent: Found one near you — under $100 and citrus-forward:
+
+**Prairie Test Gardens — Chicago, IL**
+
+From their live menu, 2 citrus options in-stock under $100:
+
+1. **Demo Flower: Prairie Sunrise - $45**
+   - SKU: FLW-001, 3.5g, 22% THC
+   - 14 in stock
+   - "Citrus-forward and bright, written for a Saturday afternoon"
+
+2. **Demo Edibles: Citrus Gummies - $25**
+   - SKU: EDB-002, 10g, 100 mg THC per unit
+   - 16 in stock
+   - Citrus gummies
+
+Note: Demo Flower: Golden Hour (light citrus and honey, $48) is also citrus but **out of stock** — 0 inventory.
+
+I've put together a weekend combo for you:
+- 1x Prairie Sunrise ($45) + 1x Citrus Gummies ($25)
+- **Total: $70** — Quote `q_0001`
+
+That keeps you well under $100.
+
+Want me to place this order now? The quote expires quickly.
+Shopper: Is the Prairie Sunrise any good for a Saturday afternoon?
+Buyer agent (relaying the merchant): Based on Prairie Test Gardens' own menu data — yes, that's exactly how they position it:
+
+**Demo Flower: Prairie Sunrise - $45**
+- SKU: FLW-001, 3.5g, 22% THC
+- 14 in stock
+- Description: *“Citrus-forward and bright, written for a Saturday afternoon in the demo script.”*
+
+That's the citrus-forward flower from the $70 quote I put together for you.
+
+Want to keep that combo, or change anything before I place the order?
+  [ok] merchant answered from menu data (names the item, size, price)
+Gate service (order session) listening at http://127.0.0.1:43383 (standalone, x-gate-key auth on)
+
+=== BEAT 2: The approved order ===
+Shopper: I will take 1 Prairie Sunrise and 2 Citrus Gummies, please.
+Buyer agent: Done! I've placed your order with **Prairie Test Gardens**:
+
+* 1x Demo Flower: Prairie Sunrise (FLW-001) - $45
+* 2x Demo Edibles: Citrus Gummies (EDB-002) - $25 each = $50
+
+**Total: $95**
+Order ID: `ord_0001`
+Status: PAYMENT_PENDING - payment session `sess_demo_0001`
+
+Quote `q_0001` was used for this order.
+Gate receipt:
+{
+  "merchant_id": "mrc_demo_prairie",
+  "decision_id": "dec_20261103_0001",
+  "decision": "APPROVE",
+  "reasons": [],
+  "evaluated": {
+    "limits_applied": {
+      "flower_equivalent_g_per_day": 30,
+      "infused_thc_mg_per_day": 500
+    },
+    "flower_equivalent_g_total": 10.5,
+    "infused_thc_mg_total": 400
+  },
+  "policy_id": "SIMULATED_POLICY_V1",
+  "cart_hash": "26bd25693215272054954c5f0a65a098050a0aecef3449497fb1aca9452d47a0",
+  "issued_at": "2026-11-03T10:17:00.974Z",
+  "expires_at": "2026-11-03T10:22:00.974Z",
+  "receipt_signature": "c7be58f4e0857ff843902cae601a98633def13cadbd9c4fe8b91d6f73b8e08ea"
+}
+  [ok] gate decision is APPROVE
+  [ok] evaluated totals are 10.5 g flower and 400 mg infused THC
+  [ok] receipt names the simulated policy
+  [ok] a payment session exists only after approval
+Payment: sandbox rail confirmed session sess_demo_0001.
+Order status: READY_FOR_PICKUP. Pickup code: PR-4821
+  [ok] order is READY_FOR_PICKUP
+  [ok] pickup code is PR-4821
+
+=== BEAT 3: The blocked order ===
+Shopper: Restock run: 8 Prairie Sunrise and 2 Citrus Gummies.
+Buyer agent: Your restock run couldn't go through — the merchant denied it at the compliance gate.
+
+**Attempted:**
+* 8x Demo Flower: Prairie Sunrise (FLW-001) - $45 each = $360
+* 2x Demo Edibles: Citrus Gummies (EDB-002) - $25 each = $50
+
+**Total: $410**
+Quote `q_0002` / Order `ord_0002`
+Status: GATE_DENIED - decision `dec_20261103_0002`
+
+Reason from the merchant:
+> Your purchase was denied because it would exceed daily limits. This order would put you at 38.5g flower-equivalent against a 30g limit and 600mg infused THC against a 500mg limit.
+
+Nothing was charged. Let me know if you want to retry with a smaller quantity that stays within the limits.
+Gate receipt:
+{
+  "merchant_id": "mrc_demo_prairie",
+  "decision_id": "dec_20261103_0002",
+  "decision": "DENY",
+  "reasons": [
+    {
+      "code": "LIMIT_EXCEEDED",
+      "detail": "This purchase would put the buyer at 38.5 g flower-equivalent against a 30 g daily limit.",
+      "limit": 30,
+      "attempted": 38.5
+    },
+    {
+      "code": "LIMIT_EXCEEDED",
+      "detail": "This purchase would put the buyer at 600 mg infused THC against a 500 mg daily limit.",
+      "limit": 500,
+      "attempted": 600
+    }
+  ],
+  "evaluated": {
+    "limits_applied": {
+      "flower_equivalent_g_per_day": 30,
+      "infused_thc_mg_per_day": 500
+    },
+    "flower_equivalent_g_total": 38.5,
+    "infused_thc_mg_total": 600
+  },
+  "policy_id": "SIMULATED_POLICY_V1",
+  "cart_hash": "29f7eef29e230b03c9c0897eb9ba7e9d7b94f591aef0352e3f3c0354733a67e5",
+  "issued_at": "2026-11-03T10:17:59.384Z",
+  "expires_at": "2026-11-03T10:22:59.384Z",
+  "receipt_signature": "115a739626f6594b968476346edd4cc0857e2d703c43195b444b6054530df3b2"
+}
+  [ok] gate decision is DENY
+  [ok] reason codes include LIMIT_EXCEEDED
+  [ok] attempted flower-equivalent total is 38.5 g against the 30 g limit
+  [ok] no payment session was created for the denied order
+  [ok] rail still has exactly 1 session (the approved order only)
+Bypass attempt: the buyer asks the payment rail for a session directly, no gate receipt:
+Payment rail: REJECTED. GATE_RECEIPT_MISSING: a payment session requires an approved ClearCart Gate receipt.
+  [ok] bypass attempt without a gate receipt is rejected
+  [ok] rail still has exactly 1 session after the bypass attempt
+
+=== BEAT 4: The gate stands alone (someone else's agent, alcohol) ===
+Equivalent call from any agent, in any framework:
+curl -s -X POST http://127.0.0.1:43383/v1/gate/check -H "content-type: application/json" -H "x-gate-key: demo-gate-key" -d '{"jurisdiction":{"country":"US","state":"IL"},"category":"alcohol","merchant_id":"ext_demo","buyer":{"attestation_id":"att_demo_7f3a"},"cart":[{"sku":"ALC-001","category":"alcohol","quantity":2}]}'
+Gate response:
+{
+  "merchant_id": "ext_demo",
+  "decision_id": "dec_20261103_0003",
+  "decision": "APPROVE",
+  "reasons": [],
+  "evaluated": {
+    "limits_applied": {
+      "items_per_day": 24
+    },
+    "items_total": 2
+  },
+  "policy_id": "SIMULATED_POLICY_V1",
+  "cart_hash": "236c55bac20d4748b855e37586ba92f2292902c5985cacec17709526f217ec76",
+  "issued_at": "2026-11-03T10:18:21.698Z",
+  "expires_at": "2026-11-03T10:23:21.698Z",
+  "receipt_signature": "52cd5953ac4bf5ae20afa60597c07b83ce2b3149d21e2c73ce641721d5cf0061"
+}
+  [ok] standalone alcohol check returns APPROVE
+  [ok] standalone check evaluated 2 items
+
+=== DEMO COMPLETE ===
+All four beats produced the expected outputs.
+EXIT_CODE=0

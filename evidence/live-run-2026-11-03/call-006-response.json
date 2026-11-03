@@ -1,0 +1,39 @@
+{
+  "id": "chatcmpl-01a1a0e8-cca9-72aa-b426-d295fada7ef0",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "Citrus picks found under budget — I'll get your quote ready.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_10341eca-5a9e-4788-8962-1ec15a2ce05a",
+            "type": "function",
+            "function": {
+              "name": "get_quote",
+              "arguments": "{}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793700973,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 229,
+    "prompt_tokens": 2046,
+    "total_tokens": 2275,
+    "completion_tokens_details": {
+      "reasoning_tokens": 172
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 1649
+    }
+  }
+}

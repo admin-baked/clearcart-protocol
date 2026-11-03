@@ -1,0 +1,39 @@
+{
+  "id": "chatcmpl-01a1a0e8-5c38-72ca-8921-d13d8938828d",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "I'll find a citrus-forward option near Chicago under $100.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_78e06b92-72be-4e73-8f9c-a83832c7824d",
+            "type": "function",
+            "function": {
+              "name": "discover_merchants",
+              "arguments": "{\"near\":\"Chicago\"}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793700944,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 116,
+    "prompt_tokens": 895,
+    "total_tokens": 1011,
+    "completion_tokens_details": {
+      "reasoning_tokens": 38
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 881
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "chatcmpl-01a1a0ea-8214-77a8-862e-09d74a54d5c3",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "Your purchase was denied because it would exceed daily limits. This order would put you at 38.5g flower-equivalent against a 30g limit and 600mg infused THC against a 500mg limit.",
+        "refusal": null,
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793701085,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 548,
+    "prompt_tokens": 354,
+    "total_tokens": 902,
+    "completion_tokens_details": {
+      "reasoning_tokens": 495
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

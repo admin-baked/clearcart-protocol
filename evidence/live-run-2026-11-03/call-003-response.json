@@ -1,0 +1,39 @@
+{
+  "id": "chatcmpl-01a1a0e8-71f2-71a8-9797-4db6a71ee2b6",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "Citrus-forward and under $100 — I'll check what's in stock near Chicago.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_9aa30c59-8d0b-411b-94f3-acc26797fbd3",
+            "type": "function",
+            "function": {
+              "name": "ask_merchant",
+              "arguments": "{\"question\":\"What citrus-forward products do you have in stock for the weekend under $100?\"}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793700950,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 387,
+    "prompt_tokens": 1705,
+    "total_tokens": 2092,
+    "completion_tokens_details": {
+      "reasoning_tokens": 297
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 1649
+    }
+  }
+}
