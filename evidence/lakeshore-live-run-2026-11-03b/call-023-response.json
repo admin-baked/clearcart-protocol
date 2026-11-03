@@ -1,0 +1,29 @@
+{
+  "id": "chatcmpl-01a1a27c-4dc4-71bd-ad58-3acf079bc32a",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "Your restock run was **denied** — no charge was made.\n\n**Attempted:**\n- 2x RYTHM Animal Face (14g each) - $120.48 total\n- Order ID: ord_0002\n- Status: GATE_DENIED\n\n**Reason from compliance gate (dec_20261103_0002):**\n> Your purchase was denied because it would exceed the daily limit. This purchase would put you at 38.5 g flower-equivalent against a 30 g daily limit.\n\nYou already have 1x Cresco Lemon Bean from order ord_0001 today counting toward that limit.\n\nWant me to try 1x RYTHM Animal Face instead? That would be much lower in flower-equivalent and is more likely to pass the 30g daily limit.",
+        "refusal": null,
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793727417,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 819,
+    "prompt_tokens": 4540,
+    "total_tokens": 5359,
+    "completion_tokens_details": {
+      "reasoning_tokens": 643
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 2673
+    }
+  }
+}

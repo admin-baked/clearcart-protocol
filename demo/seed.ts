@@ -1,9 +1,11 @@
 // Demo data loading and reset.
 //
-// The demo merchant, menu, buyers, and ledger are fictional and generated
-// for this project (see demo-data/). Loading always returns a fresh deep
-// copy, so calling loadDemoState() is the seed reset: inventory and ledger
-// go back to the exact recording state described in DEMO_SCRIPT.md.
+// The demo merchant is Lakeshore Cannabis Club (Romeoville, IL) and the
+// menu in demo-data/ is the store's real published catalog (names, sizes,
+// THC, prices); inventory counts are demo seed values. The buyers and
+// their ledgers are synthetic. Loading always returns a fresh deep copy,
+// so calling loadDemoState() is the seed reset: inventory and ledger go
+// back to the exact recording state described in DEMO_SCRIPT.md.
 
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";

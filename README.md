@@ -52,7 +52,7 @@ curl -s "http://127.0.0.1:8787/v1/gate/limits?state=IL&category=cannabis" \
 curl -s -X POST http://127.0.0.1:8787/v1/gate/check \
   -H "content-type: application/json" -H "x-gate-key: demo-gate-key" \
   -d '{"jurisdiction":{"country":"US","state":"IL"},"category":"cannabis",
-       "merchant_id":"mrc_demo_prairie",
+       "merchant_id":"mrc_lakeshore",
        "buyer":{"attestation_id":"att_demo_7f3a"},
        "cart":[{"sku":"FLW-001","quantity":1},{"sku":"EDB-002","quantity":2}]}'
 ```
@@ -65,7 +65,7 @@ Auth note: when `GATE_API_KEY` is set, `/v1` routes require a matching `x-gate-k
 
 `npm run demo` boots the gate, the merchant agent, and the buyer agent, then runs four beats:
 
-1. **Discovery and Q&A.** A buyer agent finds Prairie Test Gardens (a fictional demo dispensary) and asks a product question, answered only from the menu data.
+1. **Discovery and Q&A.** A buyer agent finds Lakeshore Cannabis Club (a real dispensary in Romeoville, IL, whose live published menu the demo runs on) and asks a product question, answered only from the menu data.
 2. **The approved order.** Cart: 1 flower unit plus 2 edibles. The gate approves with evaluated totals on the receipt (10.5 g flower-equivalent against a 30 g demo limit, 400 mg infused THC against a 500 mg demo limit) and the policy ID `SIMULATED_POLICY_V1` printed on the receipt. Only then does a sandbox payment session exist; the buyer approves it and receives pickup code PR-4821.
 3. **The blocked order, and the bypass attempt.** A restock cart that would take the buyer to 38.5 g is denied with `LIMIT_EXCEEDED` before any payment session exists. The buyer then tries to skip the gate and ask the payment rail for a session directly; the rail rejects it, because a session requires a valid gate receipt. Nothing to refund, nothing to argue about, no way around.
 4. **The gate stands alone.** A plain `curl` call, category alcohol, no BakedBot interface anywhere. The gate answers in the same shape.
@@ -136,7 +136,7 @@ agents/buyer/         Buyer agent (ModelProvider-driven tool calls)
 agents/merchant/      Merchant agent (menu, Q&A, quote, gate call, payment, pickup code)
 providers/            ModelProvider interface, Meta Model API provider, mock provider
 payments/             PaymentRail interface + sandbox handoff stub (receipt enforced)
-demo-data/            Fictional Prairie Test Gardens menu and two synthetic buyers
+demo-data/            Lakeshore Cannabis Club real published menu and two synthetic buyers
 demo/                 One-command demo runner and seed reset
 docs/                 Architecture notes, safety boundary, OpenAPI contract
 examples/             Standalone external client using only the published API

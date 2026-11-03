@@ -1,0 +1,39 @@
+{
+  "id": "chatcmpl-01a1a27a-ea7a-71dd-8c2e-2fa50f1d6eec",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "Citrus and under $100 — found a lemon option, getting your total.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_81e0fff8-24bb-4bf4-9094-9dec4ab066f1",
+            "type": "function",
+            "function": {
+              "name": "get_quote",
+              "arguments": "{}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793727326,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 565,
+    "prompt_tokens": 2840,
+    "total_tokens": 3405,
+    "completion_tokens_details": {
+      "reasoning_tokens": 505
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 2289
+    }
+  }
+}

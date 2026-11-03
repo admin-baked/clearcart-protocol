@@ -48,13 +48,13 @@ test("approved order end to end: gate receipt, sandbox payment, pickup code PR-4
   t.after(() => h.gate.close());
 
   await h.buyerA.send(
-    "Find me a dispensary near Chicago with something citrus-forward for the weekend, and keep it under a hundred dollars.",
+    "Find me a dispensary near Romeoville with something citrus-forward for the weekend, and keep it under a hundred dollars.",
   );
-  const answer = await h.buyerA.send("Is the Prairie Sunrise any good for a Saturday afternoon?");
-  assert.match(answer, /Prairie Sunrise/);
-  assert.match(answer, /\$45/);
+  const answer = await h.buyerA.send("Is the Cresco Lemon Bean any good for a Saturday afternoon?");
+  assert.match(answer, /Lemon Bean/);
+  assert.match(answer, /\$28\.11/);
 
-  await h.buyerA.send("I will take 1 Prairie Sunrise and 2 Citrus Gummies, please.");
+  await h.buyerA.send("I will take 1 Cresco Lemon Bean, 1 IC Collective Citrus Black Grape, and 1 Uncle Arnie's Sunrise Orange, please.");
   const order = h.buyerA.lastOrder;
   assert.ok(order);
   assert.equal(order.status, "PAYMENT_PENDING");
@@ -74,11 +74,11 @@ test("blocked order end to end: DENY with LIMIT_EXCEEDED and no payment session"
   const h = await makeHarness();
   t.after(() => h.gate.close());
 
-  await h.buyerA.send("I will take 1 Prairie Sunrise and 2 Citrus Gummies, please.");
+  await h.buyerA.send("I will take 1 Cresco Lemon Bean, 1 IC Collective Citrus Black Grape, and 1 Uncle Arnie's Sunrise Orange, please.");
   await h.buyerA.confirmPayment();
   assert.equal(h.rail.sessionCount(), 1);
 
-  const reply = await h.buyerA.send("Restock run: 8 Prairie Sunrise and 2 Citrus Gummies.");
+  const reply = await h.buyerA.send("Restock run: 2 RYTHM Animal Face.");
   const order = h.buyerA.lastOrder;
   assert.ok(order);
   assert.equal(order.status, "GATE_DENIED");
@@ -95,7 +95,7 @@ test("unverified buyer end to end: DENY with AGE_UNVERIFIED and ID_UNVERIFIED", 
   const h = await makeHarness();
   t.after(() => h.gate.close());
 
-  await h.buyerB.send("I will take 1 Prairie Sunrise, please.");
+  await h.buyerB.send("I will take 1 Cresco Lemon Bean, please.");
   const order = h.buyerB.lastOrder;
   assert.ok(order);
   assert.equal(order.status, "GATE_DENIED");
@@ -134,7 +134,7 @@ test("standalone gate endpoints: limits, attestation demo stub, and API key enfo
   const minted = await client.check({
     jurisdiction: { country: "US", state: "IL" },
     category: "cannabis",
-    merchant_id: "mrc_demo_prairie",
+    merchant_id: "mrc_lakeshore",
     buyer: { attestation_id: attestation.attestation_id },
     cart: [{ sku: "FLW-001", quantity: 1 }],
   });

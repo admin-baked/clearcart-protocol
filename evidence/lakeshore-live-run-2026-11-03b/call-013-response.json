@@ -1,0 +1,39 @@
+{
+  "id": "chatcmpl-01a1a27b-9f7c-7655-8f96-49621edbf5a1",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "I'll pull the menu to find your three items.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_14c98b7e-7f76-4c2e-bf4b-53dccb1690d1",
+            "type": "function",
+            "function": {
+              "name": "get_menu",
+              "arguments": "{\"merchant_id\":\"mrc_lakeshore\"}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793727373,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 182,
+    "prompt_tokens": 965,
+    "total_tokens": 1147,
+    "completion_tokens_details": {
+      "reasoning_tokens": 108
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

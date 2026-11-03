@@ -24,7 +24,7 @@ test("independent external client runs a gate check against a locally started ga
   const { stdout } = await run("node", [CLIENT, "--url", gate.baseUrl, "--key", API_KEY]);
   const receipt = JSON.parse(stdout) as DecisionReceipt;
   assert.equal(receipt.decision, "APPROVE");
-  assert.equal(receipt.merchant_id, "mrc_demo_prairie");
+  assert.equal(receipt.merchant_id, "mrc_lakeshore");
   assert.equal(receipt.policy_id, "SIMULATED_POLICY_V1");
   assert.equal(receipt.evaluated.flower_equivalent_g_total, 10.5);
   assert.equal(receipt.evaluated.infused_thc_mg_total, 400);

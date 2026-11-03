@@ -46,7 +46,7 @@ function specExampleInput(): GateCheckInput {
   return {
     jurisdiction: { country: "US", state: "IL" },
     category: "cannabis",
-    merchant_id: "mrc_demo_prairie",
+    merchant_id: "mrc_lakeshore",
     buyer: verifiedBuyer(),
     cart: [
       { sku: "FLW-001", category: "flower", quantity: 1, unit_thc_mg: 9999, flower_equivalent_g: 999 },
@@ -65,7 +65,7 @@ test("approve: a verified buyer inside the limits is approved with evaluated tot
     flower_equivalent_g_per_day: 30,
     infused_thc_mg_per_day: 500,
   });
-  assert.equal(receipt.merchant_id, "mrc_demo_prairie");
+  assert.equal(receipt.merchant_id, "mrc_lakeshore");
   assert.equal(receipt.policy_id, "SIMULATED_POLICY_V1");
   assert.equal(receipt.decision_id, "dec_20261103_0001");
   assert.equal(receipt.issued_at, "2026-11-03T15:00:00.000Z");
@@ -164,7 +164,7 @@ test("server-side ledger: an approval reserves its totals, so the same cart agai
   const cart: GateCheckInput = {
     jurisdiction: { country: "US", state: "IL" },
     category: "cannabis",
-    merchant_id: "mrc_demo_prairie",
+    merchant_id: "mrc_lakeshore",
     buyer: verifiedBuyer(),
     cart: [{ sku: "FLW-001", category: "flower", quantity: 6 }],
   };

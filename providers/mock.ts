@@ -37,7 +37,8 @@ function escapeRegExp(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-/** "Demo Flower: Prairie Sunrise" becomes "Prairie Sunrise". */
+/** Menu names are brand-prefixed ("Cresco Lemon Bean") and used whole;
+ *  a "Category: Name" prefix, if one ever appears, is stripped. */
 function shortName(name: string): string {
   const parts = name.split(":");
   return parts[parts.length - 1].trim();
@@ -74,8 +75,8 @@ function extractMenu(messages: Message[]): MenuItemLike[] | null {
   return null;
 }
 
-/** Parses "1 Prairie Sunrise and 2 x Citrus Gummies" style instructions
- *  into concrete cart intents, matched against the real menu. */
+/** Parses "1 Cresco Lemon Bean and 2 x RYTHM Animal Face" style
+ *  instructions into concrete cart intents, matched against the menu. */
 function parseDesiredItems(instruction: string, menu: MenuItemLike[]): Array<{ sku: string; quantity: number }> {
   const text = instruction.toLowerCase();
   const desired: Array<{ sku: string; quantity: number }> = [];
@@ -147,14 +148,14 @@ export class MockProvider implements ModelProvider {
     // Discovery, once per session.
     if (!allToolNames.includes("discover_merchants")) {
       const nearMatch = /near\s+([A-Za-z ]+?)(,| with| and|$)/i.exec(instruction);
-      return this.call("discover_merchants", { near: nearMatch ? nearMatch[1].trim() : "Chicago" });
+      return this.call("discover_merchants", { near: nearMatch ? nearMatch[1].trim() : "Romeoville" });
     }
     if (!allToolNames.includes("get_menu")) {
       const discovery = toolResults(messages, "discover_merchants").pop();
       const parsed = discovery
         ? parseJson<{ merchants?: Array<{ id: string }> }>(discovery.content)
         : null;
-      const merchantId = parsed?.merchants?.[0]?.id ?? "mrc_demo_prairie";
+      const merchantId = parsed?.merchants?.[0]?.id ?? "mrc_lakeshore";
       return this.call("get_menu", { merchant_id: merchantId });
     }
 
@@ -236,7 +237,7 @@ export class MockProvider implements ModelProvider {
       const names = menu.map((i) => i.name).join("; ");
       return {
         kind: "text",
-        text: `That item is not on the Prairie Test Gardens menu, so I cannot describe it. On the menu: ${names}.`,
+        text: `That item is not on the Lakeshore Cannabis Club menu, so I cannot describe it. On the menu: ${names}.`,
       };
     }
     const potency =

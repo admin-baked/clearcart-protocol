@@ -98,7 +98,7 @@ no purchase history. The gate ignores any a caller sends.
 {
   "jurisdiction": { "country": "US", "state": "IL" },
   "category": "cannabis",
-  "merchant_id": "mrc_demo_prairie",
+  "merchant_id": "mrc_lakeshore",
   "buyer": { "attestation_id": "att_demo_7f3a" },
   "cart": [
     { "sku": "FLW-001", "quantity": 1 },
@@ -111,7 +111,7 @@ Output is a decision receipt:
 
 ```json
 {
-  "merchant_id": "mrc_demo_prairie",
+  "merchant_id": "mrc_lakeshore",
   "decision_id": "dec_20261103_0001",
   "decision": "APPROVE",
   "reasons": [],

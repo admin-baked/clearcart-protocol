@@ -1,0 +1,29 @@
+{
+  "id": "chatcmpl-01a1a27c-2fa4-7722-bef4-0bedda23130f",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "Your purchase was denied because it would exceed the daily limit. This purchase would put you at 38.5 g flower-equivalent against a 30 g daily limit.",
+        "refusal": null,
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793727410,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 624,
+    "prompt_tokens": 310,
+    "total_tokens": 934,
+    "completion_tokens_details": {
+      "reasoning_tokens": 581
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "run": "clearcart demo:live dress rehearsal",
+  "started_at": "2026-11-03T17:34:45.373Z",
+  "finished_at": "2026-11-03T17:36:56.928Z",
+  "provider": "meta-live",
+  "model": "muse-spark-1.3",
+  "total_model_calls": 23,
+  "usage_totals": {
+    "prompt_tokens": 58228,
+    "completion_tokens": 12861,
+    "total_tokens": 71089
+  },
+  "beats": {
+    "Beat 1": {
+      "passed": true,
+      "checks": [
+        {
+          "beat": "Beat 1",
+          "label": "merchant answered from menu data (names the item, size, price)",
+          "ok": true
+        }
+      ]
+    },
+    "Beat 2": {
+      "passed": true,
+      "checks": [
+        {
+          "beat": "Beat 2",
+          "label": "gate decision is APPROVE",
+          "ok": true
+        },
+        {
+          "beat": "Beat 2",
+          "label": "evaluated totals are 10.5 g flower and 400 mg infused THC",
+          "ok": true
+        },
+        {
+          "beat": "Beat 2",
+          "label": "receipt names the simulated policy",
+          "ok": true
+        },
+        {
+          "beat": "Beat 2",
+          "label": "a payment session exists only after approval",
+          "ok": true
+        },
+        {
+          "beat": "Beat 2",
+          "label": "order is READY_FOR_PICKUP",
+          "ok": true
+        },
+        {
+          "beat": "Beat 2",
+          "label": "pickup code is PR-4821",
+          "ok": true
+        }
+      ]
+    },
+    "Beat 3": {
+      "passed": true,
+      "checks": [
+        {
+          "beat": "Beat 3",
+          "label": "gate decision is DENY",
+          "ok": true
+        },
+        {
+          "beat": "Beat 3",
+          "label": "reason codes include LIMIT_EXCEEDED",
+          "ok": true
+        },
+        {
+          "beat": "Beat 3",
+          "label": "attempted flower-equivalent total is 38.5 g against the 30 g limit",
+          "ok": true
+        },
+        {
+          "beat": "Beat 3",
+          "label": "no payment session was created for the denied order",
+          "ok": true
+        },
+        {
+          "beat": "Beat 3",
+          "label": "rail still has exactly 1 session (the approved order only)",
+          "ok": true
+        },
+        {
+          "beat": "Beat 3",
+          "label": "bypass attempt without a gate receipt is rejected",
+          "ok": true
+        },
+        {
+          "beat": "Beat 3",
+          "label": "rail still has exactly 1 session after the bypass attempt",
+          "ok": true
+        }
+      ]
+    },
+    "Beat 4": {
+      "passed": true,
+      "checks": [
+        {
+          "beat": "Beat 4",
+          "label": "standalone alcohol check returns APPROVE",
+          "ok": true
+        },
+        {
+          "beat": "Beat 4",
+          "label": "standalone check evaluated 2 items",
+          "ok": true
+        }
+      ]
+    }
+  },
+  "failures": 0,
+  "error": null,
+  "all_beats_passed": true
+}

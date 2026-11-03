@@ -1,0 +1,204 @@
+{
+  "model": "muse-spark-1.3",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the ClearCart buyer agent. You shop on behalf of a demo buyer by calling tools: discover_merchants, get_menu, ask_merchant, add_to_cart, get_quote, place_order. Never invent products, prices, or inventory; use only what tool results return."
+    },
+    {
+      "role": "user",
+      "content": "I will take 1 Cresco Lemon Bean, 1 IC Collective Citrus Black Grape, and 1 Uncle Arnie's Sunrise Orange, please."
+    },
+    {
+      "role": "assistant",
+      "content": "[tool call: discover_merchants]"
+    },
+    {
+      "role": "user",
+      "content": "Tool result (discover_merchants): {\"merchants\":[{\"id\":\"mrc_lakeshore\",\"name\":\"Lakeshore Cannabis Club\",\"location\":\"Romeoville, IL\"}]}"
+    },
+    {
+      "role": "assistant",
+      "content": "[tool call: get_menu]"
+    },
+    {
+      "role": "user",
+      "content": "Tool result (get_menu): {\"merchant_id\":\"mrc_lakeshore\",\"items\":[{\"category\":\"flower\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Citrus-forward sativa flower, 3.5 g, 23.07% THC. Bright lemon notes, written for a Saturday afternoon.\",\"flower_equivalent_g\":3.5,\"inventory\":14,\"name\":\"Cresco Lemon Bean\",\"price_usd\":28.11,\"size_g\":3.5,\"sku\":\"FLW-001\",\"thc_mg\":0,\"thc_percent\":23.07},{\"category\":\"flower\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Infused flower, 7 g. Lemon sorbet citrus profile. THC percentage not published on the live menu.\",\"flower_equivalent_g\":7,\"inventory\":9,\"name\":\"Savvy Lemon Sorbet\",\"price_usd\":40.15,\"size_g\":7,\"sku\":\"FLW-002\",\"thc_mg\":0},{\"category\":\"flower\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Pre-pack mixed-buds flower, 14 g, 23.41% THC.\",\"flower_equivalent_g\":14,\"inventory\":6,\"name\":\"&Shine Beaver Cookies\",\"price_usd\":60.24,\"size_g\":14,\"sku\":\"FLW-003\",\"thc_mg\":0,\"thc_percent\":23.41},{\"category\":\"flower\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Flower, 14 g, 29.97% THC.\",\"flower_equivalent_g\":14,\"inventory\":8,\"name\":\"RYTHM Animal Face\",\"price_usd\":60.24,\"size_g\":14,\"sku\":\"FLW-004\",\"thc_mg\":0,\"thc_percent\":29.97},{\"category\":\"edible\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Rosin gummies, 5 per pack, 100 mg THC per pack (20 mg each). Citrus and black grape.\",\"flower_equivalent_g\":0,\"inventory\":16,\"name\":\"IC Collective Citrus Black Grape\",\"price_usd\":14.87,\"size_g\":0,\"sku\":\"EDB-001\",\"thc_mg\":100,\"thc_percent\":0},{\"category\":\"edible\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Gummies, 10 per pack, 100 mg THC + 200 mg CBD per pack (2:1). Sour tangerine citrus.\",\"flower_equivalent_g\":0,\"inventory\":20,\"name\":\"incredibles Sour Tangahhhrine + CBD\",\"price_usd\":8.92,\"size_g\":0,\"sku\":\"EDB-002\",\"thc_mg\":100,\"thc_percent\":0},{\"category\":\"edible\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Gummies, 10 per pack, 100 mg THC per pack. Strawberry lemon citrus.\",\"flower_equivalent_g\":0,\"inventory\":12,\"name\":\"Daze Off Strawberry Lemon-fade\",\"price_usd\":8.92,\"size_g\":0,\"sku\":\"EDB-003\",\"thc_mg\":100,\"thc_percent\":0},{\"category\":\"edible\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Live rosin gummies, 10 per pack, 100 mg THC per pack. Watermelon.\",\"flower_equivalent_g\":0,\"inventory\":11,\"name\":\"RYTHM Watermelon Animal Face\",\"price_usd\":11.15,\"size_g\":0,\"sku\":\"EDB-004\",\"thc_mg\":100,\"thc_percent\":0},{\"category\":\"edible\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Drink shot, 2 oz, 100 mg THC per bottle. Sunrise orange citrus.\",\"flower_equivalent_g\":0,\"inventory\":18,\"name\":\"Uncle Arnie's Sunrise Orange\",\"price_usd\":8.92,\"size_g\":0,\"sku\":\"EDB-005\",\"thc_mg\":100,\"thc_percent\":0},{\"category\":\"pre-roll\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Pre-rolls, 7 x 0.5 g (3.5 g total), 19.43% THC. Florida Oranges + Jenny Kush, citrus.\",\"flower_equivalent_g\":3.5,\"inventory\":10,\"name\":\"Daze Off Photosynthesis\",\"price_usd\":20.07,\"size_g\":3.5,\"sku\":\"PRE-001\",\"thc_mg\":0,\"thc_percent\":19.43},{\"category\":\"pre-roll\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Diamond-infused pre-roll, 1 g. THC percentage not published on the live menu.\",\"flower_equivalent_g\":1,\"inventory\":9,\"name\":\"RYTHM Durban Poison\",\"price_usd\":14.87,\"size_g\":1,\"sku\":\"PRE-002\",\"thc_mg\":0},{\"category\":\"vape\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Disposable vape, 3 g, 88.33% THC. Clementine citrus.\",\"flower_equivalent_g\":0,\"inventory\":7,\"name\":\"Savvy HYPHEN Clementine\",\"price_usd\":53.76,\"size_g\":3,\"sku\":\"VAP-001\",\"thc_mg\":2650,\"thc_percent\":88.33},{\"category\":\"vape\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Vape cartridge, 1 g, 93.43% THC. Pineapple.\",\"flower_equivalent_g\":0,\"inventory\":6,\"name\":\"RYTHM Pineapple Express\",\"price_usd\":35.84,\"size_g\":1,\"sku\":\"VAP-002\",\"thc_mg\":934,\"thc_percent\":93.43},{\"category\":\"extract\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). FSHO extract syringe, 1 g, 17.69% THC. Florida oranges citrus.\",\"flower_equivalent_g\":0,\"inventory\":5,\"name\":\"Aeriz Florida Oranges\",\"price_usd\":25.09,\"size_g\":1,\"sku\":\"EXT-001\",\"thc_mg\":177,\"thc_percent\":17.69}]}"
+    },
+    {
+      "role": "assistant",
+      "content": "[tool call: add_to_cart]"
+    },
+    {
+      "role": "user",
+      "content": "Tool result (add_to_cart): {\"sku\":\"FLW-001\",\"quantity\":1,\"cart\":[{\"sku\":\"FLW-001\",\"quantity\":1}]}"
+    },
+    {
+      "role": "assistant",
+      "content": "[tool call: add_to_cart]"
+    },
+    {
+      "role": "user",
+      "content": "Tool result (add_to_cart): {\"sku\":\"EDB-001\",\"quantity\":1,\"cart\":[{\"sku\":\"FLW-001\",\"quantity\":1},{\"sku\":\"EDB-001\",\"quantity\":1}]}"
+    },
+    {
+      "role": "assistant",
+      "content": "[tool call: add_to_cart]"
+    },
+    {
+      "role": "user",
+      "content": "Tool result (add_to_cart): {\"sku\":\"EDB-005\",\"quantity\":1,\"cart\":[{\"sku\":\"FLW-001\",\"quantity\":1},{\"sku\":\"EDB-001\",\"quantity\":1},{\"sku\":\"EDB-005\",\"quantity\":1}]}"
+    },
+    {
+      "role": "assistant",
+      "content": "[tool call: get_quote]"
+    },
+    {
+      "role": "user",
+      "content": "Tool result (get_quote): {\"quote_id\":\"q_0001\",\"merchant_id\":\"mrc_lakeshore\",\"lines\":[{\"sku\":\"FLW-001\",\"name\":\"Cresco Lemon Bean\",\"quantity\":1,\"unit_price_usd\":28.11,\"line_total_usd\":28.11},{\"sku\":\"EDB-001\",\"name\":\"IC Collective Citrus Black Grape\",\"quantity\":1,\"unit_price_usd\":14.87,\"line_total_usd\":14.87},{\"sku\":\"EDB-005\",\"name\":\"Uncle Arnie's Sunrise Orange\",\"quantity\":1,\"unit_price_usd\":8.92,\"line_total_usd\":8.92}],\"total_usd\":51.9,\"issued_at\":\"2026-11-03T17:36:20.187Z\",\"expires_at\":\"2026-11-03T17:38:20.187Z\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "[tool call: place_order]"
+    },
+    {
+      "role": "user",
+      "content": "Tool result (place_order): {\"order_id\":\"ord_0001\",\"status\":\"PAYMENT_PENDING\",\"total_usd\":51.9,\"gate_decision_id\":\"dec_20261103_0001\",\"payment_session_id\":\"sess_demo_0001\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "Your order is placed with **Lakeshore Cannabis Club**:\n\n- 1x Cresco Lemon Bean - $28.11\n- 1x IC Collective Citrus Black Grape - $14.87\n- 1x Uncle Arnie's Sunrise Orange - $8.92\n\n**Total: $51.90**\n**Order ID: ord_0001**\n**Status: PAYMENT_PENDING**\n\nPayment session sess_demo_0001 is ready to complete purchase."
+    },
+    {
+      "role": "user",
+      "content": "Restock run: 2 RYTHM Animal Face."
+    },
+    {
+      "role": "assistant",
+      "content": "[tool call: get_menu]"
+    },
+    {
+      "role": "user",
+      "content": "Tool result (get_menu): {\"merchant_id\":\"mrc_lakeshore\",\"items\":[{\"category\":\"flower\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Citrus-forward sativa flower, 3.5 g, 23.07% THC. Bright lemon notes, written for a Saturday afternoon.\",\"flower_equivalent_g\":3.5,\"inventory\":13,\"name\":\"Cresco Lemon Bean\",\"price_usd\":28.11,\"size_g\":3.5,\"sku\":\"FLW-001\",\"thc_mg\":0,\"thc_percent\":23.07},{\"category\":\"flower\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Infused flower, 7 g. Lemon sorbet citrus profile. THC percentage not published on the live menu.\",\"flower_equivalent_g\":7,\"inventory\":9,\"name\":\"Savvy Lemon Sorbet\",\"price_usd\":40.15,\"size_g\":7,\"sku\":\"FLW-002\",\"thc_mg\":0},{\"category\":\"flower\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Pre-pack mixed-buds flower, 14 g, 23.41% THC.\",\"flower_equivalent_g\":14,\"inventory\":6,\"name\":\"&Shine Beaver Cookies\",\"price_usd\":60.24,\"size_g\":14,\"sku\":\"FLW-003\",\"thc_mg\":0,\"thc_percent\":23.41},{\"category\":\"flower\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Flower, 14 g, 29.97% THC.\",\"flower_equivalent_g\":14,\"inventory\":8,\"name\":\"RYTHM Animal Face\",\"price_usd\":60.24,\"size_g\":14,\"sku\":\"FLW-004\",\"thc_mg\":0,\"thc_percent\":29.97},{\"category\":\"edible\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Rosin gummies, 5 per pack, 100 mg THC per pack (20 mg each). Citrus and black grape.\",\"flower_equivalent_g\":0,\"inventory\":15,\"name\":\"IC Collective Citrus Black Grape\",\"price_usd\":14.87,\"size_g\":0,\"sku\":\"EDB-001\",\"thc_mg\":100,\"thc_percent\":0},{\"category\":\"edible\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Gummies, 10 per pack, 100 mg THC + 200 mg CBD per pack (2:1). Sour tangerine citrus.\",\"flower_equivalent_g\":0,\"inventory\":20,\"name\":\"incredibles Sour Tangahhhrine + CBD\",\"price_usd\":8.92,\"size_g\":0,\"sku\":\"EDB-002\",\"thc_mg\":100,\"thc_percent\":0},{\"category\":\"edible\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Gummies, 10 per pack, 100 mg THC per pack. Strawberry lemon citrus.\",\"flower_equivalent_g\":0,\"inventory\":12,\"name\":\"Daze Off Strawberry Lemon-fade\",\"price_usd\":8.92,\"size_g\":0,\"sku\":\"EDB-003\",\"thc_mg\":100,\"thc_percent\":0},{\"category\":\"edible\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Live rosin gummies, 10 per pack, 100 mg THC per pack. Watermelon.\",\"flower_equivalent_g\":0,\"inventory\":11,\"name\":\"RYTHM Watermelon Animal Face\",\"price_usd\":11.15,\"size_g\":0,\"sku\":\"EDB-004\",\"thc_mg\":100,\"thc_percent\":0},{\"category\":\"edible\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Drink shot, 2 oz, 100 mg THC per bottle. Sunrise orange citrus.\",\"flower_equivalent_g\":0,\"inventory\":17,\"name\":\"Uncle Arnie's Sunrise Orange\",\"price_usd\":8.92,\"size_g\":0,\"sku\":\"EDB-005\",\"thc_mg\":100,\"thc_percent\":0},{\"category\":\"pre-roll\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Pre-rolls, 7 x 0.5 g (3.5 g total), 19.43% THC. Florida Oranges + Jenny Kush, citrus.\",\"flower_equivalent_g\":3.5,\"inventory\":10,\"name\":\"Daze Off Photosynthesis\",\"price_usd\":20.07,\"size_g\":3.5,\"sku\":\"PRE-001\",\"thc_mg\":0,\"thc_percent\":19.43},{\"category\":\"pre-roll\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Diamond-infused pre-roll, 1 g. THC percentage not published on the live menu.\",\"flower_equivalent_g\":1,\"inventory\":9,\"name\":\"RYTHM Durban Poison\",\"price_usd\":14.87,\"size_g\":1,\"sku\":\"PRE-002\",\"thc_mg\":0},{\"category\":\"vape\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Disposable vape, 3 g, 88.33% THC. Clementine citrus.\",\"flower_equivalent_g\":0,\"inventory\":7,\"name\":\"Savvy HYPHEN Clementine\",\"price_usd\":53.76,\"size_g\":3,\"sku\":\"VAP-001\",\"thc_mg\":2650,\"thc_percent\":88.33},{\"category\":\"vape\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). Vape cartridge, 1 g, 93.43% THC. Pineapple.\",\"flower_equivalent_g\":0,\"inventory\":6,\"name\":\"RYTHM Pineapple Express\",\"price_usd\":35.84,\"size_g\":1,\"sku\":\"VAP-002\",\"thc_mg\":934,\"thc_percent\":93.43},{\"category\":\"extract\",\"description\":\"On Lakeshore Cannabis Club's live menu (Jane). FSHO extract syringe, 1 g, 17.69% THC. Florida oranges citrus.\",\"flower_equivalent_g\":0,\"inventory\":5,\"name\":\"Aeriz Florida Oranges\",\"price_usd\":25.09,\"size_g\":1,\"sku\":\"EXT-001\",\"thc_mg\":177,\"thc_percent\":17.69}]}"
+    },
+    {
+      "role": "assistant",
+      "content": "[tool call: add_to_cart]"
+    },
+    {
+      "role": "user",
+      "content": "Tool result (add_to_cart): {\"sku\":\"FLW-004\",\"quantity\":2,\"cart\":[{\"sku\":\"FLW-004\",\"quantity\":2}]}"
+    },
+    {
+      "role": "assistant",
+      "content": "[tool call: get_quote]"
+    },
+    {
+      "role": "user",
+      "content": "Tool result (get_quote): {\"quote_id\":\"q_0002\",\"merchant_id\":\"mrc_lakeshore\",\"lines\":[{\"sku\":\"FLW-004\",\"name\":\"RYTHM Animal Face\",\"quantity\":2,\"unit_price_usd\":60.24,\"line_total_usd\":120.48}],\"total_usd\":120.48,\"issued_at\":\"2026-11-03T17:36:40.308Z\",\"expires_at\":\"2026-11-03T17:38:40.308Z\"}"
+    }
+  ],
+  "max_tokens": 4096,
+  "temperature": 0.2,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "discover_merchants",
+        "description": "Find ClearCart merchant agents near a place.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "near": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "near"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "get_menu",
+        "description": "Fetch a merchant agent's live menu with prices and inventory.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "merchant_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "merchant_id"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "ask_merchant",
+        "description": "Ask the merchant agent a product question, answered only from its menu data.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "question": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "question"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "add_to_cart",
+        "description": "Add a menu item to the cart by SKU.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "sku": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "sku",
+            "quantity"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "get_quote",
+        "description": "Get a priced quote with a TTL for the current cart.",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "place_order",
+        "description": "Submit the quoted cart. The merchant runs the compliance gate before any payment session exists.",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    }
+  ],
+  "tool_choice": "auto"
+}

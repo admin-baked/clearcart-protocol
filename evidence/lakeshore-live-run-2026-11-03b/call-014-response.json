@@ -1,0 +1,55 @@
+{
+  "id": "chatcmpl-01a1a27b-ae54-767d-b81f-7431c62b1c09",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "Got it — adding those three to your cart.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_8abb9fa9-0683-4681-9419-eef374084de2",
+            "type": "function",
+            "function": {
+              "name": "add_to_cart",
+              "arguments": "{\"quantity\":1.0,\"sku\":\"FLW-001\"}"
+            }
+          },
+          {
+            "id": "call_13c09e1d-4673-47a1-b58b-ca762ac79be3",
+            "type": "function",
+            "function": {
+              "name": "add_to_cart",
+              "arguments": "{\"quantity\":1.0,\"sku\":\"EDB-001\"}"
+            }
+          },
+          {
+            "id": "call_bc90761e-81e4-4bf7-afef-ccacbd2d3b29",
+            "type": "function",
+            "function": {
+              "name": "add_to_cart",
+              "arguments": "{\"quantity\":1.0,\"sku\":\"EDB-005\"}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793727376,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 410,
+    "prompt_tokens": 2326,
+    "total_tokens": 2736,
+    "completion_tokens_details": {
+      "reasoning_tokens": 185
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 2289
+    }
+  }
+}

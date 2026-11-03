@@ -152,7 +152,7 @@ async function sendOrderInstruction(buyer: BuyerAgent, instruction: string): Pro
 
 async function main(): Promise<void> {
   console.log("ClearCart Protocol + ClearCart Gate: LIVE dress rehearsal");
-  console.log(`Model provider: Meta Model API (live, model ${MODEL}) via the connected helper. Payment rail: sandbox stub. No real money, no real data.`);
+  console.log(`Model provider: Meta Model API (live, model ${MODEL}) via the connected helper. Payment rail: sandbox stub. No real money moves: the merchant is Lakeshore Cannabis Club (Romeoville, IL) and its catalog is the store's real published menu; buyers and transactions are simulated.`);
   console.log(`Evidence directory: ${evidenceDir}`);
 
   try {
@@ -165,14 +165,14 @@ async function main(): Promise<void> {
       currentBeat = "Beat 1";
       header("BEAT 1: Discovery and a product question");
       const shopperAsk =
-        "Find me a dispensary near Chicago with something citrus-forward for the weekend, and keep it under a hundred dollars.";
+        "Find me a dispensary near Romeoville with something citrus-forward for the weekend, and keep it under a hundred dollars.";
       console.log(`Shopper: ${shopperAsk}`);
       console.log(`Buyer agent: ${await buyer.send(shopperAsk)}`);
-      const followUp = "Is the Prairie Sunrise any good for a Saturday afternoon?";
+      const followUp = "Is the Cresco Lemon Bean any good for a Saturday afternoon?";
       console.log(`Shopper: ${followUp}`);
       const answer = await buyer.send(followUp);
       console.log(`Buyer agent (relaying the merchant): ${answer}`);
-      check("merchant answered from menu data (names the item, size, price)", answer.includes("Prairie Sunrise") && answer.includes("$45"));
+      check("merchant answered from menu data (names the item, size, price)", answer.includes("Lemon Bean") && answer.includes("$28.11"));
     } finally {
       await gateA.close();
     }
@@ -186,7 +186,7 @@ async function main(): Promise<void> {
       // ----- Beat 2: the approved order -----------------------------------
       currentBeat = "Beat 2";
       header("BEAT 2: The approved order");
-      const orderAsk = "I will take 1 Prairie Sunrise and 2 Citrus Gummies, please.";
+      const orderAsk = "I will take 1 Cresco Lemon Bean, 1 IC Collective Citrus Black Grape, and 1 Uncle Arnie's Sunrise Orange, please.";
       await sendOrderInstruction(buyer, orderAsk);
       const approvedOrder = buyer.lastOrder;
       if (!approvedOrder) throw new Error("Beat 2 produced no order");
@@ -212,7 +212,7 @@ async function main(): Promise<void> {
       // ----- Beat 3: the blocked order --------------------------------------
       currentBeat = "Beat 3";
       header("BEAT 3: The blocked order");
-      const restockAsk = "Restock run: 8 Prairie Sunrise and 2 Citrus Gummies.";
+      const restockAsk = "Restock run: 2 RYTHM Animal Face.";
       await sendOrderInstruction(buyer, restockAsk);
       const deniedOrder = buyer.lastOrder;
       if (!deniedOrder) throw new Error("Beat 3 produced no order");

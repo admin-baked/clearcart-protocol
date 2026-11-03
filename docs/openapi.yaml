@@ -39,7 +39,7 @@ paths:
             example:
               jurisdiction: { country: US, state: IL }
               category: cannabis
-              merchant_id: mrc_demo_prairie
+              merchant_id: mrc_lakeshore
               buyer: { attestation_id: att_demo_7f3a }
               cart:
                 - { sku: FLW-001, quantity: 1 }
@@ -136,7 +136,7 @@ components:
         category: { type: string, example: cannabis }
         merchant_id:
           type: string
-          example: mrc_demo_prairie
+          example: mrc_lakeshore
           description: Identifies whose gate-side catalog resolves the cart; the receipt is bound to it.
         buyer:
           type: object
@@ -159,7 +159,7 @@ components:
       type: object
       required: [merchant_id, decision_id, decision, reasons, evaluated, policy_id, cart_hash, receipt_signature, issued_at, expires_at]
       properties:
-        merchant_id: { type: string, example: mrc_demo_prairie }
+        merchant_id: { type: string, example: mrc_lakeshore }
         decision_id: { type: string, example: dec_20261103_0001 }
         decision: { type: string, enum: [APPROVE, DENY, REVIEW] }
         reasons:

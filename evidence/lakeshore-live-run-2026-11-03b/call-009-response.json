@@ -1,0 +1,39 @@
+{
+  "id": "chatcmpl-01a1a27b-5075-72ac-8f20-95efe14f9fdb",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "That lemon sativa sounds perfect for Saturday — let me pull its details.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_458be0ae-6313-4f62-a4f8-0a09ab0f3f79",
+            "type": "function",
+            "function": {
+              "name": "ask_merchant",
+              "arguments": "{\"question\":\"Is the Cresco Lemon Bean good for a Saturday afternoon? What does its menu description say about effects and flavor?\"}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793727352,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 385,
+    "prompt_tokens": 3271,
+    "total_tokens": 3656,
+    "completion_tokens_details": {
+      "reasoning_tokens": 289
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 2289
+    }
+  }
+}

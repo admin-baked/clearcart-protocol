@@ -1,0 +1,39 @@
+{
+  "id": "chatcmpl-01a1a27b-be00-7046-88ad-111f1876a878",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "Got your three items — I'll get a quote and place the order.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_ad810f74-64a2-4526-bfd6-95523f836279",
+            "type": "function",
+            "function": {
+              "name": "get_quote",
+              "arguments": "{}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793727380,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 97,
+    "prompt_tokens": 2509,
+    "total_tokens": 2606,
+    "completion_tokens_details": {
+      "reasoning_tokens": 39
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

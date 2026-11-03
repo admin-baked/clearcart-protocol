@@ -1,0 +1,39 @@
+{
+  "id": "chatcmpl-01a1a27b-2798-746f-b34b-6001ef89402b",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "Found a citrus-forward option under $100 — getting your order ready to place.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_16123a48-d660-4aac-bfb4-29293b8662d1",
+            "type": "function",
+            "function": {
+              "name": "place_order",
+              "arguments": "{}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793727342,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 1558,
+    "prompt_tokens": 2967,
+    "total_tokens": 4525,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1498
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 2673
+    }
+  }
+}

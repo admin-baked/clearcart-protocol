@@ -1,0 +1,39 @@
+{
+  "id": "chatcmpl-01a1a27a-68c2-708a-bca4-aafa8e40df0e",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "Found a shop near Romeoville — now I'll check their citrus options under $100.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_4dbf444f-ee4f-483b-bd38-5a35a8bfb1a8",
+            "type": "function",
+            "function": {
+              "name": "get_menu",
+              "arguments": "{\"merchant_id\":\"mrc_lakeshore\"}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793727293,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 180,
+    "prompt_tokens": 959,
+    "total_tokens": 1139,
+    "completion_tokens_details": {
+      "reasoning_tokens": 98
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 881
+    }
+  }
+}

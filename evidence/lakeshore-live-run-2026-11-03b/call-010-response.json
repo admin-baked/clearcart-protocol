@@ -1,0 +1,29 @@
+{
+  "id": "chatcmpl-01a1a27b-781d-741a-b57c-1f286c9508d9",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "Yes — per its live menu description:\n\n**Cresco Lemon Bean** — 3.5g flower, 23.07% THC, $28.11\n\nIts menu description says:\n> \"Citrus-forward sativa flower... Bright lemon notes, written for a Saturday afternoon.\"\n\nFlavor noted in the menu: bright lemon / citrus-forward.\n\nThe menu doesn't list specific effects beyond describing it as a sativa flower.",
+        "refusal": null,
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793727363,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 1233,
+    "prompt_tokens": 1397,
+    "total_tokens": 2630,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1139
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

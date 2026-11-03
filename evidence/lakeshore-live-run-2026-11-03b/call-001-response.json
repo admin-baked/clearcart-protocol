@@ -1,0 +1,39 @@
+{
+  "id": "chatcmpl-01a1a27a-5b78-774e-b66e-2a677e25aa93",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "I'll find a citrus-forward option near Romeoville under $100.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_26d232fd-9bf0-4a4c-8e5e-0c4f3e5e5551",
+            "type": "function",
+            "function": {
+              "name": "discover_merchants",
+              "arguments": "{\"near\":\"Romeoville\"}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793727290,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 100,
+    "prompt_tokens": 897,
+    "total_tokens": 997,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

@@ -74,9 +74,10 @@ end-to-end test runs it against a locally started gate. That is the
 interop evidence: the gate is usable by code that shares nothing with
 this codebase.
 
-**Demo data and runner** (`demo-data/`, `demo/`). Fictional Prairie Test
-Gardens menu (9 items) and two synthetic buyers: Buyer A, fully verified
-with 7.0 g and 200 mg of prior purchases today, and Buyer B, unverified.
+**Demo data and runner** (`demo-data/`, `demo/`). Lakeshore Cannabis
+Club's real published menu (14 items, from the store's live Jane menu)
+and two synthetic buyers: Buyer A, fully verified with 7.0 g and 200 mg
+of synthetic prior purchases today, and Buyer B, unverified.
 `demo/seed.ts` returns a fresh deep copy per load, which is the seed
 reset. `demo/run-demo.ts` boots the gate on an ephemeral port and runs
 the four script beats with self-checks.

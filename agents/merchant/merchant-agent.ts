@@ -1,4 +1,5 @@
-// Merchant agent: serves one demo dispensary (Prairie Test Gardens).
+// Merchant agent: serves the demo merchant, Lakeshore Cannabis Club
+// (Romeoville, IL), from its real published menu.
 //
 // Responsibilities: discovery entry, live menu, product Q&A grounded only
 // in menu data (via ModelProvider), quotes with a TTL, the gate call before

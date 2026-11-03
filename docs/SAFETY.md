@@ -17,10 +17,13 @@ demo. Read this page before deploying, extending, or describing it.
   photo, date of birth, or any other real personal data is requested,
   stored, or shown. The stub verifies nothing about any real person and
   must never be presented as identity verification.
-- **No real customer data.** The merchant (Prairie Test Gardens), the
-  menu, the buyers, and the ledger are fictional and were generated for
-  this project. No real dispensary's name, menu, pricing, or sales data
-  appears anywhere in this repository.
+- **No real customer data.** The merchant is Lakeshore Cannabis Club,
+  a real dispensary in Romeoville, IL, and the menu and prices are its
+  real published catalog, used here for demonstration with simulated
+  transactions. The buyers, their attestations, and the purchase ledger
+  are fictional and were generated for this project. No real customer's
+  name, order history, or personal data appears anywhere in this
+  repository.
 - **No legal determinations.** The gate evaluates demo rules against demo
   data. It decides nothing about real-world legality. The per-state
   numbers in `services/gate/config/` are simulated demo parameters,

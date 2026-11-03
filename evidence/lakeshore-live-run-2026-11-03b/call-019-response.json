@@ -1,0 +1,39 @@
+{
+  "id": "chatcmpl-01a1a27c-028d-7137-8b5d-2b7b6170da79",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "content": "Restocking 2 RYTHM Animal Face — checking availability and adding to cart.",
+        "refusal": null,
+        "tool_calls": [
+          {
+            "id": "call_81143ed2-3eae-4e54-bc24-577429ae792d",
+            "type": "function",
+            "function": {
+              "name": "add_to_cart",
+              "arguments": "{\"quantity\":2.0,\"sku\":\"FLW-004\"}"
+            }
+          }
+        ],
+        "role": "assistant"
+      },
+      "logprobs": null
+    }
+  ],
+  "created": 1793727398,
+  "model": "muse-spark-1.3",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 418,
+    "prompt_tokens": 4263,
+    "total_tokens": 4681,
+    "completion_tokens_details": {
+      "reasoning_tokens": 321
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 2289
+    }
+  }
+}

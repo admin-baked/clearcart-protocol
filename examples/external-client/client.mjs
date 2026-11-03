@@ -10,7 +10,7 @@
 // Usage:
 //   node examples/external-client/client.mjs [--url http://127.0.0.1:8787] [--key demo-gate-key]
 //
-// It runs one check for the fictional demo merchant (a verified buyer,
+// It runs one check for the demo merchant, Lakeshore Cannabis Club (a verified buyer,
 // a small cart) and prints the gate's decision receipt as JSON on
 // stdout. Start the gate first:  GATE_API_KEY=demo-gate-key npm run gate
 
@@ -26,7 +26,7 @@ const apiKey = argValue("--key", process.env.GATE_API_KEY ?? "demo-gate-key");
 const request = {
   jurisdiction: { country: "US", state: "IL" },
   category: "cannabis",
-  merchant_id: "mrc_demo_prairie",
+  merchant_id: "mrc_lakeshore",
   buyer: { attestation_id: "att_demo_7f3a" },
   cart: [
     { sku: "FLW-001", quantity: 1 },

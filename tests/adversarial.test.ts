@@ -25,7 +25,7 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const GATE_DIR = join(HERE, "..", "services", "gate");
 const T0 = new Date("2026-11-03T15:00:00Z");
 const SECRET = "adversarial-secret";
-const MERCHANT = "mrc_demo_prairie";
+const MERCHANT = "mrc_lakeshore";
 
 function makeEngine(clock: () => Date = () => T0): GateEngine {
   const seed = loadDemoStoreSeed(join(GATE_DIR, "seed", "demo-store.json"));
@@ -58,7 +58,11 @@ function checkInput(cart: GateCheckInput["cart"], attestation_id = "att_demo_7f3
   };
 }
 
-function makeRail(clock?: () => Date): StubRail {
+function makeRail(clock: () => Date = () => T0): StubRail {
+  // The rail must judge receipts at the same fixed clock the engine
+  // minted them with (T0); defaulting to wall-clock time made these
+  // tests expire their own receipts five minutes after T0's date.
+  // The expired-receipt test passes its own late clock explicitly.
   return new StubRail({ merchant_id: MERCHANT, gate_secret: SECRET, clock });
 }
 
@@ -66,7 +70,7 @@ function sessionInput(receipt: DecisionReceipt, lines = APPROVED_LINES) {
   return {
     order_id: "ord_attack_0001",
     merchant_id: MERCHANT,
-    amount_usd: 95,
+    amount_usd: 45.95, // 1 x FLW-001 ($28.11) + 2 x EDB-002 ($8.92)
     gate_receipt: receipt,
     cart_lines: lines,
   };
@@ -129,7 +133,7 @@ test("duplicate payment webhook confirm is idempotent", async (t) => {
   const merchant = new MerchantAgent({ state, provider: new MockProvider(), gate: client, rail });
   const buyer = new BuyerAgent({ provider: new MockProvider(), merchant, buyer: state.buyers[0] });
 
-  await buyer.send("I will take 1 Prairie Sunrise and 2 Citrus Gummies, please.");
+  await buyer.send("I will take 1 Cresco Lemon Bean, 1 IC Collective Citrus Black Grape, and 1 Uncle Arnie's Sunrise Orange, please.");
   const paid = await buyer.confirmPayment();
   assert.equal(paid.status, "READY_FOR_PICKUP");
   assert.equal(paid.pickup_code, "PR-4821");
